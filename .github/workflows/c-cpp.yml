@@ -27,8 +27,10 @@ jobs:
     - name: compress
       run: tar czvf mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz mcrcon
     - name: Get SHA256
-      run: sha256sum mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz >> mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.sha256
+      run: sha256sum mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz 
       id: get_sha
+    - name: save sha
+      run: echo "${{ steps.get_sha.outputs.branch }}" >> mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.sha256
     - name: debug
       run: ls -la
     - uses: actions/upload-artifact@v3
