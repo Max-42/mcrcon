@@ -33,7 +33,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         path: |
-          mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz: ./mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz
-          mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.sha256: ./mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.256
+          mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz: mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz
+          mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.sha256: mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.256
 
         if-no-files-found: error
