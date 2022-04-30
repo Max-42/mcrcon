@@ -21,3 +21,4 @@ jobs:
       with:
         name: mcrcon
         path: ./mcrcon
+        if-no-files-found: error
