@@ -24,8 +24,10 @@ jobs:
       id: extract_branch
     - name: compress
       run: tar czvf mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz mcrcon
+    - name: Get SHA256
+      run: sha256sum mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz >> mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.sha256
     - uses: actions/upload-artifact@v3
       with:
-        name: mcrcon
-        path: ./mcrcon
+        name: mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz
+        path: ./mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz
         if-no-files-found: error
