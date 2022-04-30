@@ -10,8 +10,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env: 
-      CROSS_COMPILE: arm-none-linux-gnueabi-
+    #env: 
+    #  CROSS_COMPILE: arm-none-linux-gnueabi-
 
     steps:
     - uses: actions/checkout@v3
