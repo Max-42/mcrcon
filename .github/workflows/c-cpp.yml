@@ -13,10 +13,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Set output
+      id: vars
+      run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
     - name: make
       run: make
-    - name: text
-      run: ls -la
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+    - name: compress
+      run: tar czvf mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz mcrcon
     - uses: actions/upload-artifact@v3
       with:
         name: mcrcon
