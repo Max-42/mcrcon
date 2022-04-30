@@ -40,7 +40,7 @@ jobs:
         path: mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz
     - uses: actions/upload-artifact@v3
       with:
-        name: ${{ steps.sha.outputs.sha256 }}
+        name: ${{ steps.sha.outputs.sha256 }}.sha
         path: mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.sha256
     
 
