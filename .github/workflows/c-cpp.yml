@@ -31,15 +31,15 @@ jobs:
       id: get_sha
     - name: save sha
       run: echo "${{ steps.get_sha.outputs.branch }}" >> mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.sha256
-    - name: debug
-      run: ls -la
+    - name: set-sha
+      run: echo "::set-output name=sha256::$(cat mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.sha256)"
     - uses: actions/upload-artifact@v3
       with:
         name: mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz
         path: mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz
     - uses: actions/upload-artifact@v3
       with:
-        name: ${{ steps.get_sha.outputs }}
+        name: ${{ steps.get_sha.outputs.sha256 }}
         path: mcrcon-${{ steps.extract_branch.outputs.branch }}-${{ steps.vars.outputs.tag }}.tar.gz.sha256
     
 
