@@ -655,7 +655,7 @@ int run_terminal_mode(int sock)
 	int ret = 0;
 	char command[DATA_BUFFSIZE] = {0x00};
 
-	puts("Logged in.\nType 'Q' or press Ctrl-D / Ctrl-C to disconnect.");
+	puts("Logged in.\nType 'Q' or press Ctrl-D / Ctrl-C to disconnect.\n\nAngemeldet.\nTippe Q oder STRG+D /  STRG+C um die Verbindung zu trennen.");
 
 	while (global_connection_alive) {
 		putchar('>');
